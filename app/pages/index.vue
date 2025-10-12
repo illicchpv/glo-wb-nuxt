@@ -1,7 +1,5 @@
 <template>
 
-  <Header></Header>
-
   <section class="slider swiper-container">
     <div class="swiper-wrapper">
       <section class="slide slide-1 swiper-slide">
@@ -219,6 +217,6 @@
     <!-- /.row -->
   </section>
 
-  <Footer></Footer>
+
 
 </template>

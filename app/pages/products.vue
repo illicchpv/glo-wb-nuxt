@@ -1,7 +1,5 @@
 <template>
 
-  <Header></Header>
-
   <section class="long-goods d-block">
     <div class="container">
       <div class="row align-items-center mb-4">
@@ -206,7 +204,5 @@
       </div>
     </div>
   </section>
-
-  <Footer></Footer>
 
 </template>

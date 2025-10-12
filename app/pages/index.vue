@@ -3,9 +3,9 @@
   <header class="container header px-4 px-md-0">
     <div class="row justify-content-between align-items-center">
       <div class="col-lg-2 col-6">
-        <a href="index.html" class="logo-link">
+        <NuxtLink  to="/" class="logo-link">
           <img width="128" src="/images/logo.svg" alt="logo: Willberries" class="logo-image">
-        </a>
+        </NuxtLink >
       </div>
       <div class="col-lg-6 d-none d-lg-block">
         <nav>

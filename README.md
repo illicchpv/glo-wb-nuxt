@@ -81,6 +81,7 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 [мой GIT](https://github.com/illicchpv/glo-wb)
 
+[мой GIT NUXT](https://github.com/illicchpv/glo-wb-nuxt)
 
 ### Урок 5. Базовое приложение на Nuxt
 
@@ -103,4 +104,12 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 	- app\app.vue - основной компонент приложения
   - nuxt.config.ts - конфигурация приложения
   - tsconfig.json - настройки ts ?
-  
+
+### Урок 6. [Nuxt. Получение и вывод данных](https://glo-academy.org/wb_js_lesson6)
+
+- [Документация Nuxt](https://nuxt.com/)
+
+#### Задание
+
+- Повторить код за уроком
+- Результат необходимо отправить телеграм-боту — залить на github или отправить архивом

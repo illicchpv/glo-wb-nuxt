@@ -95,9 +95,7 @@
             <img src="/images/arrow.svg" alt="icon: arrow" class="button-icon">
           </button>
         </div>
-        <!-- /.card -->
       </div>
-      <!-- /.col-6 -->
       <div class="col-xl-6">
         <div class="card card-2 mb-4">
           <h3 class="card-title text-light">Catch the Sun: Spring Break Styles From $5.99</h3>
@@ -107,9 +105,7 @@
             <img src="/images/arrow.svg" alt="icon: arrow" class="button-icon">
           </button>
         </div>
-        <!-- /.card -->
       </div>
-      <!-- /.col-6 -->
       <div class="col-xl-9 col-lg-6 mb-4">
         <div class="card card-3">
           <span class="label">Bestseller</span>
@@ -120,9 +116,7 @@
             <span class="button-text">Shop now</span>
           </button>
         </div>
-        <!-- /.card -->
       </div>
-      <!-- /.col-9 -->
       <div class="col-xl-3 col-lg-6">
         <div class="card card-4">
           <h3 class="card-title text-light mw-160">Printed Shirt with a Bow</h3>
@@ -132,91 +126,90 @@
             <span class="button-text">Shop now</span>
           </button>
         </div>
-        <!-- /.card -->
       </div>
-      <!-- /.col-3 -->
     </div>
-    <!-- /.row -->
+
+
     <div class="row align-items-center mb-4">
       <div class="col-9">
         <h2 class="section-title">New Arrival</h2>
       </div>
-      <!-- /.col-9 -->
       <div class="col-3 d-flex justify-content-end">
-        <a href="#" class="more">View All</a>
+        <!-- <a href="#" class="more">View All</a> -->
+        <NuxtLink :to="{path: '/products', query: {field: 'label', name: 'New'}}" class="more">
+          View All
+          {{ hello.hello }}
+        </NuxtLink>
       </div>
-      <!-- /.col-3 -->
     </div>
-    <!-- /.row -->
     <div class="short-goods row">
-      <div class="col-lg-3 col-sm-6">
+
+      <div class="col-lg-3 col-sm-6" v-for="card in (data || []).filter((c) => c.label.toLowerCase() === 'new').splice(0, 4)">
+        <div class="goods-card">
+          <span class="label">{{ card.label }}</span>
+          <img :src="card.img" :alt="`Image: ${card.name}`" class="goods-image">
+          <h3 class="goods-title">{{ card.name }}</h3>
+          <p class="goods-description">{{ card.description }}</p>
+          <button class="button goods-card-btn add-to-cart" :data-id="card.id">
+            <span class="button-price">{{ card.price }}</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- <div class="col-lg-3 col-sm-6">
         <div class="goods-card">
           <span class="label">New</span>
-          <!-- /.label --><img src="/images/image-119.jpg" alt="image: Hoodie" class="goods-image">
+          <img src="/images/image-119.jpg" alt="image: Hoodie" class="goods-image">
           <h3 class="goods-title">Embroidered Hoodie</h3>
-          <!-- /.goods-title -->
           <p class="goods-description">Yellow/Lilac/Fuchsia/Orange</p>
-          <!-- /.goods-description -->
-          <!-- /.goods-price -->
           <button class="button goods-card-btn add-to-cart" data-id="012">
             <span class="button-price">$89</span>
           </button>
         </div>
-        <!-- /.goods-card -->
       </div>
-      <!-- /.col-3 -->
       <div class="col-lg-3 col-sm-6">
         <div class="goods-card">
           <span class="label">New</span>
-          <!-- /.label --><img src="/images/image-120.jpg" alt="image: Faded Beach Trousers" class="goods-image">
+          <img src="/images/image-120.jpg" alt="image: Faded Beach Trousers" class="goods-image">
           <h3 class="goods-title">Faded Beach Trousers</h3>
-          <!-- /.goods-title -->
           <p class="goods-description">Navy/Ochre/Black/Khaki</p>
-          <!-- /.goods-description -->
           <button class="button goods-card-btn add-to-cart" data-id="011">
             <span class="button-price">$139</span>
           </button>
-          <!-- /.goods-price -->
         </div>
-        <!-- /.goods-card -->
       </div>
-      <!-- /.col-3 -->
       <div class="col-lg-3 col-sm-6">
         <div class="goods-card">
           <span class="label">New</span>
-          <!-- /.label --><img src="/images/image-121.jpg" alt="image: Text T-Shirt" class="goods-image">
+          <img src="/images/image-121.jpg" alt="image: Text T-Shirt" class="goods-image">
           <h3 class="goods-title">Text T-Shirt</h3>
-          <!-- /.goods-title -->
           <p class="goods-description">White</p>
-          <!-- /.goods-description -->
           <button class="button goods-card-btn add-to-cart" data-id="010">
             <span class="button-price">$59</span>
           </button>
-          <!-- /.goods-price -->
         </div>
-        <!-- /.goods-card -->
       </div>
-      <!-- /.col-3 -->
       <div class="col-lg-3 col-sm-6">
         <div class="goods-card">
           <span class="label">New</span>
-          <!-- /.label --><img src="/images/image-122.jpg" alt="image: Striped Long Sleeve Shirt" class="goods-image">
+          <img src="/images/image-122.jpg" alt="image: Striped Long Sleeve Shirt" class="goods-image">
           <h3 class="goods-title">Striped Long Sleeve Shirt</h3>
-          <!-- /.goods-title -->
           <p class="goods-description">Red/Sky Blue</p>
-          <!-- /.goods-description -->
           <button class="button goods-card-btn add-to-cart" data-id="001">
             <span class="button-price">$119</span>
           </button>
-          <!-- /.goods-price -->
         </div>
-        <!-- /.goods-card -->
-      </div>
-      <!-- /.col-3 -->
+      </div> -->
     </div>
-    <!-- /.row -->
   </section>
 
-
-
 </template>
+
+<script setup>
+// db.json
+const { data } = await useFetch('/db.json')//.then(res => res.data.filter((item) => item.label.toLowerCase() === 'new'));
+console.log('data: ', data);
+
+const { data: hello } = await useFetch('/api/new-products');
+console.log('hello: ', hello);
+</script>

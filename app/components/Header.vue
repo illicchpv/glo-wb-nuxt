@@ -10,26 +10,9 @@
       <div class="col-lg-6 d-none d-lg-block">
         <nav>
           <ul class="navigation d-flex justify-content-around">
-            <li class="navigation-item">
-              <NuxtLink to="/products" class="navigation-link" data-field="gender">Womens</NuxtLink>
-              <!-- <a href="#" class="navigation-link" data-field="gender">Womens</a> -->
+            <li class="navigation-item" v-for="link in links" :key="link.id">
+              <NuxtLink :to="link.route" class="navigation-link">{{ link.text }}</NuxtLink>
             </li>
-            <li class="navigation-item">
-              <a href="#" class="navigation-link" data-field="gender">Mens</a>
-            </li>
-            <li class="navigation-item">
-              <a href="#" class="navigation-link" data-field="category">Clothing</a>
-            </li>
-            <li class="navigation-item">
-              <a href="#" class="navigation-link" data-field="category">Accessories</a>
-            </li>
-            <li class="navigation-item">
-              <a href="#" class="navigation-link" data-field="category">Shoes</a>
-            </li>
-            <li class="navigation-item">
-              <a href="#" class="navigation-link">All</a>
-            </li>
-
           </ul>
         </nav>
       </div>
@@ -43,6 +26,7 @@
         </div>
       </div>
       <div class="col-lg-2 col-6 d-flex justify-content-end">
+        <!-- @click="changeLinks()  -->
         <button class="button button-cart">
           <img class="button-icon" src="/images/cart.svg" alt="icon: cart">
           <span class="button-text">Cart</span>
@@ -51,6 +35,22 @@
       </div>
     </div>
   </header>
-
-
 </template>
+
+<script setup>
+const links = ref([
+  {id: 1, route: {path: '/products', query: {field: 'gender', name: 'womens'}}, text: 'Womens'},
+  {id: 2, route: {path: '/products', query: {field: 'gender', name: 'mens'}}, text: 'Mens'},
+  {id: 3, route: {path: '/products', query: {field: 'category', name: 'clothing'}}, text: 'Clothing'},
+  {id: 4, route: {path: '/products', query: {field: 'category', name: 'accessories'}}, text: 'Accessories'},
+  {id: 5, route: {path: '/products', query: {field: 'category', name: 'shoes'}}, text: 'Shoes'},
+  {id: 6, route: {path: '/products'}, text: 'All'},
+]);
+
+// const changeLinks = () => {
+//   console.log('changeLinks');
+//   links.value = [
+//     {id: 6, route: {path: '/products'}, text: 'All'},
+//   ];
+// };
+</script>

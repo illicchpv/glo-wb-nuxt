@@ -138,20 +138,19 @@
         <!-- <a href="#" class="more">View All</a> -->
         <NuxtLink :to="{path: '/products', query: {field: 'label', name: 'New'}}" class="more">
           View All
-          {{ hello.hello }}
         </NuxtLink>
       </div>
     </div>
     <div class="short-goods row">
 
-      <div class="col-lg-3 col-sm-6" v-for="card in (data || []).filter((c) => c.label.toLowerCase() === 'new').splice(0, 4)">
+      <div class="col-lg-3 col-sm-6" v-for="card in data">
         <div class="goods-card">
           <span class="label">{{ card.label }}</span>
           <img :src="card.img" :alt="`Image: ${card.name}`" class="goods-image">
           <h3 class="goods-title">{{ card.name }}</h3>
           <p class="goods-description">{{ card.description }}</p>
           <button class="button goods-card-btn add-to-cart" :data-id="card.id">
-            <span class="button-price">{{ card.price }}</span>
+            <span class="button-price">${{ card.price }}</span>
           </button>
         </div>
       </div>
@@ -207,9 +206,11 @@
 
 <script setup>
 // db.json
-const { data } = await useFetch('/db.json')//.then(res => res.data.filter((item) => item.label.toLowerCase() === 'new'));
-console.log('data: ', data);
+// const { data } = await useFetch('/db.json')//.then(res => res.data.filter((item) => item.label.toLowerCase() === 'new'));
+// console.log('data: ', data);
+// const { data: hello } = await useFetch('/api/new-products');
+// console.log('hello: ', hello);
 
-const { data: hello } = await useFetch('/api/new-products');
-console.log('hello: ', hello);
+
+const { data } = await useFetch('/api/new-products');
 </script>

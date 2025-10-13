@@ -12,7 +12,7 @@
 
         <div class="col-lg-3 col-sm-6" v-for="card in data">
           <div class="goods-card">
-            <span class="label">{{ card.label }}</span>
+            <span class="label" v-if="card.label">{{ card.label }}</span>
             <!-- <img src="/images/image-119.jpg" alt="image: Hoodie" class="goods-image"> -->
             <img :src="card.img" :alt="`Image: ${card.name}`" class="goods-image">
 
@@ -204,7 +204,7 @@
     </div>
   </section>
 
-  {{ route.query.field }} / {{ route.query.name }}
+  <!-- {{ route.query.field }} / {{ route.query.name }} -->
 </template>
 
 <script setup lang="ts">

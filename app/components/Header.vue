@@ -19,8 +19,11 @@
       <div class="col-lg-2 d-none d-lg-block">
         <div class="form-control search-block">
           <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username"
+            v-model="searchQuery" 
             aria-describedby="button-addon2">
-          <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+          <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+            @click="searchProducts"
+          >
             <img src="/images/search.png" alt="search">
           </button>
         </div>
@@ -46,6 +49,17 @@ const links = ref([
   {id: 5, route: {path: '/products', query: {field: 'category', name: 'shoes'}}, text: 'Shoes'},
   {id: 6, route: {path: '/products'}, text: 'All'},
 ]);
+
+const searchQuery = ref('')
+
+const searchProducts = async () => {
+  console.log('searchProducts:', searchQuery.value);
+  if(!searchQuery.value) return
+  await navigateTo({
+    path: '/products',
+    query: {field: 'search', name: searchQuery.value.trim()}
+  })  
+};
 
 // const changeLinks = () => {
 //   console.log('changeLinks');

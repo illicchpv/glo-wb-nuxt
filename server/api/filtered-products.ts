@@ -11,8 +11,14 @@ const getFilteredProducts = (products: Product[],
   console.log('getFilteredProducts query.field: ', query.field);
   if (query.field && query.name) {
     console.log('(query.field && query.name)');
-    if(query.field.toString() === 'search') return products.filter((c) => c.name.toLowerCase().includes(query.name.toLowerCase()))
-    return products.filter((c) => c[query.field].toString().toLowerCase() === query.name.toLowerCase())
+    if (query.field.toString() === 'search') {
+      return products.filter((c) => c.name.toLowerCase().includes(query.name.toLowerCase()))
+    }
+    return products.filter((c) => {
+      if (query.field === 'offer') return c[query.field] === !!query.name
+      return c[query.field].toLowerCase() === query.name.toLowerCase()
+    }
+    )
   }
   console.log('NOT (query.field && query.name)');
   return products

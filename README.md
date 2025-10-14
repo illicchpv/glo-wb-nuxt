@@ -117,6 +117,8 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 ### Урок 7. [Nuxt. Корзина товаров](https://glo-academy.org/wb_js_lesson7)
 
+- глобальные состояния
+
 #### Задание
 
 - Повторить код за уроком

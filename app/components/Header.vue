@@ -18,19 +18,18 @@
       </div>
       <div class="col-lg-2 d-none d-lg-block">
         <div class="form-control search-block">
-          <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username"
-            v-model="searchQuery" 
-            aria-describedby="button-addon2">
-          <button class="btn btn-outline-secondary" type="button" id="button-addon2"
-            @click="searchProducts"
-          >
+          <input type="search" class="form-control" placeholder="Search" aria-label="Recipient's username"
+            autocomplete="none" v-model="searchQuery" aria-describedby="button-addon2">
+          <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="searchProducts">
             <img src="/images/search.png" alt="search">
           </button>
         </div>
       </div>
       <div class="col-lg-2 col-6 d-flex justify-content-end">
         <!-- @click="changeLinks()  -->
-        <button class="button button-cart">
+        <button class="button button-cart" 
+          @click="openCart()"
+        >
           <img class="button-icon" src="/images/cart.svg" alt="icon: cart">
           <span class="button-text">Cart</span>
           <span class="button-text cart-count"></span>
@@ -38,6 +37,7 @@
       </div>
     </div>
   </header>
+
 </template>
 
 <script setup>
@@ -50,15 +50,28 @@ const links = ref([
   {id: 6, route: {path: '/products'}, text: 'All'},
 ]);
 
-const searchQuery = ref('')
+const searchQuery = ref('');
 
 const searchProducts = async () => {
   console.log('searchProducts:', searchQuery.value);
-  if(!searchQuery.value) return
-  await navigateTo({
-    path: '/products',
-    query: {field: 'search', name: searchQuery.value.trim()}
-  })  
+  if (!searchQuery.value) {
+    await navigateTo({
+      path: '/products',
+    });
+  } else {
+    await navigateTo({
+      path: '/products',
+      query: {field: 'search', name: searchQuery.value.trim()}
+    });
+  }
+};
+
+const viewCart = useViewCart();
+const openCart = () => {
+  // const old = viewCart.value
+  viewCart.value = true
+  // viewCart.value = !viewCart.value
+  // console.log('openCart', old, '->', viewCart.value);
 };
 
 // const changeLinks = () => {

@@ -136,7 +136,7 @@
       </div>
       <div class="col-3 d-flex justify-content-end">
         <!-- <a href="#" class="more">View All</a> -->
-        <NuxtLink :to="{path: '/products', query: {field: 'label', name: 'New'}}" class="more">
+        <NuxtLink :to="{ path: '/products', query: { field: 'label', name: 'New' } }" class="more">
           View All
         </NuxtLink>
       </div>
@@ -145,11 +145,11 @@
 
       <div class="col-lg-3 col-sm-6" v-for="card in data">
         <div class="goods-card">
-          <span class="label">{{ card.label }}</span>
+          <span class="label" v-if="card.label">{{ titleFormat(card.label) }}</span>
           <img :src="card.img" :alt="`Image: ${card.name}`" class="goods-image">
           <h3 class="goods-title">{{ card.name }}</h3>
           <p class="goods-description">{{ card.description }}</p>
-          <button class="button goods-card-btn add-to-cart" :data-id="card.id">
+          <button class="button goods-card-btn add-to-cart" @click="addToCart(card)">
             <span class="button-price">${{ card.price }}</span>
           </button>
         </div>
@@ -204,7 +204,10 @@
 
 </template>
 
-<script setup>
+<script setup lang="ts">
+import type { CartItem } from '~/models/cart-item.model';
+import type { Product } from '~/models/product.model';
+
 // db.json
 // const { data } = await useFetch('/db.json')//.then(res => res.data.filter((item) => item.label.toLowerCase() === 'new'));
 // console.log('data: ', data);
@@ -213,4 +216,23 @@
 
 
 const { data } = await useFetch('/api/new-products');
+
+const cartItems = useCart()
+
+const addToCart = (product: Product) => {
+  // console.log('addToCart product: ', product);
+  let cartItem: CartItem | undefined = cartItems.value.find(el => el.id === product.id)
+  if (cartItem) {
+    cartItem.count++
+  } else {
+    cartItem = {
+      id: product.id,
+      name: product.name,
+      price: +product.price,
+      count: 1
+    }
+    cartItems.value.push(cartItem)
+  }
+  console.log('cartItems: ', cartItems.value);
+}
 </script>

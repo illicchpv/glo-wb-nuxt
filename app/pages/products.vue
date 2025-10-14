@@ -12,13 +12,13 @@
 
         <div class="col-lg-3 col-sm-6" v-for="card in data">
           <div class="goods-card">
-            <span class="label" v-if="card.label">{{ card.label }}</span>
+            <span class="label" v-if="card.label">{{ titleFormat(card.label) }}</span>
             <!-- <img src="/images/image-119.jpg" alt="image: Hoodie" class="goods-image"> -->
             <img :src="card.img" :alt="`Image: ${card.name}`" class="goods-image">
 
             <h3 class="goods-title">{{ card.name }}</h3>
             <p class="goods-description">{{ card.description }}</p>
-            <button class="button goods-card-btn add-to-cart" :data-id="card.id">
+            <button class="button goods-card-btn add-to-cart" @click="addToCart(card)">
               <span class="button-price">${{ card.price }}</span>
             </button>
           </div>
@@ -208,6 +208,9 @@
 </template>
 
 <script setup lang="ts">
+import type { CartItem } from '~/models/cart-item.model';
+import type { Product } from '~/models/product.model';
+
 definePageMeta({
   layout: 'custom'
 })
@@ -228,5 +231,26 @@ const { data } = await useAsyncData('filtered-products', () => {
 }, {
   watch: [field, name]
 })
+
+// --------------
+const cartItems = useCart()
+
+const addToCart = (product: Product) => {
+  // console.log('addToCart product: ', product);
+  let cartItem: CartItem | undefined = cartItems.value.find(el => el.id === product.id)
+  if (cartItem) {
+    cartItem.count++
+  } else {
+    cartItem = {
+      id: product.id,
+      name: product.name,
+      price: +product.price,
+      count: 1
+    }
+    cartItems.value.push(cartItem)
+  }
+  console.log('cartItems: ', cartItems.value);
+}
+
 
 </script>

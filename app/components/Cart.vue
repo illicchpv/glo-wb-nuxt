@@ -34,18 +34,11 @@
           <tr class="cart-item" v-for="cartItem in cartItems" :key="cartItem.id">
             <td>{{ cartItem.name }}</td>
             <td>{{ cartItem.price }}$</td>
-            <td><button class="cart-btn-minus"
-                :disabled="cartItem.count === 1"
-                @click="decr(cartItem)"
-              >-</button></td>
+            <td><button class="cart-btn-minus" :disabled="cartItem.count === 1" @click="decr(cartItem)">-</button></td>
             <td>{{ cartItem.count }}</td>
-            <td><button class="cart-btn-plus"
-                @click="incr(cartItem)"
-              >+</button></td>
+            <td><button class="cart-btn-plus" @click="incr(cartItem)">+</button></td>
             <td>{{ cartItem.count * cartItem.price }}$</td>
-            <td><button class="cart-btn-delete"
-                @click="remove(cartItem)"
-              >x</button></td>
+            <td><button class="cart-btn-delete" @click="remove(cartItem)">x</button></td>
           </tr>
 
         </tbody>
@@ -58,13 +51,17 @@
         </tfoot>
       </table>
 
-      <form class="modal-form" action="">
-        <input class="modal-input" type="text" placeholder="Имя" name="nameCustomer">
-        <input class="modal-input" type="text" placeholder="Телефон" name="phoneCustomer">
+      <form class="modal-form" @submit.prevent="submitForm">
+        <input autocomplete="none" class="modal-input" type="text" placeholder="Имя" v-model="form.name">
+        <input autocomplete="none" class="modal-input" type="text" placeholder="Телефон" v-model="form.phone">
         <button class="button cart-buy" type="submit">
           <span class="button-text">Checkout</span>
         </button>
       </form>
+      <div>
+        <h3 v-if="error" style="color: red;">{{ error }}</h3>
+        <h3 v-if="success" style="color: green;">{{ success }}</h3>
+      </div>
     </div>
   </div>
 </template>
@@ -74,7 +71,7 @@ import type { CartItem } from '~/models/cart-item.model';
 
 const viewCart = useViewCart();
 const cartItems = useCart();
-const total = computed(() => cartItems.value.reduce((acc, el) => acc + (el.count * el.price), 0)) 
+const total = computed(() => cartItems.value.reduce((acc, el) => acc + (el.count * el.price), 0))
 
 const closeCart = () => {
   // const old = viewCart.value
@@ -106,4 +103,50 @@ const remove = (item: CartItem) => {
     // cartItems.value.splice(cartItems.value.indexOf(cartItem), 1);
   }
 };
+const clear = () => {
+  cartItems.value = []
+};
+
+
+// ------------------
+const form = ref({ name: '', phone: '' })
+const success = ref<string>('')
+const error = ref<string>('')
+
+const submitForm = async () => {
+  if (!form.value.name || !form.value.phone) {
+    error.value = 'Заполните обязательные поля'
+    setTimeout(() => {
+      error.value = ''
+    }, 2_000)
+    return
+  }
+  error.value = ''
+  success.value = ''
+  const dataToSend = {
+    ...form.value,
+    cartObj: cartItems.value.map(el => ({ ...el })),
+  }
+  console.log('dataToSend: ', dataToSend);
+  const url = 'https://jsonplaceholder.typicode.com/posts';
+  try {
+    const data = await $fetch<any>(url, {
+      method: 'POST',
+      body: JSON.stringify(dataToSend)
+    })
+    success.value = data.message || 'Данные отправлены!'
+    form.value = { name: '', phone: '' }
+    clear()
+    setTimeout(() => {
+      success.value = ''
+      closeCart()
+    }, 2_000)
+  } catch (err: any) {
+    error.value = err.data?.message || 'Ошибка отправки'
+    setTimeout(() => {
+      error.value = ''
+    }, 3_000)
+  }
+}
+
 </script>

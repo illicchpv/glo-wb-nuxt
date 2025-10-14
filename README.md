@@ -79,6 +79,8 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 ---
 ---
 
+[NUXT](https://nuxt-ru.vercel.app/docs/getting-started/introduction)
+
 [мой GIT](https://github.com/illicchpv/glo-wb)
 
 [мой GIT NUXT](https://github.com/illicchpv/glo-wb-nuxt)

@@ -375,6 +375,7 @@ button {
     padding: 30px;
     overflow: auto;
     position: relative;
+    border-radius: 5px;
 }
 
 .modal-header {
@@ -392,7 +393,7 @@ button {
     background-color: transparent;
     right: 15px;
     top: 15px;
-    font-size: 24px;
+    font-size: 46px;
     border: none;
 }
 
@@ -406,7 +407,7 @@ button {
     margin-right: 30px;
     height: 40px;
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 5px;
     border-style: none;
     margin-bottom: 30px;
 }
@@ -420,7 +421,8 @@ button {
 .cart-table th,
 .cart-table td {
     text-align: left;
-    border: 1px solid black
+    border: 1px solid #bbbbbb;
+    padding: 2px 4px;
 }
 
 .cart-buy {
@@ -429,6 +431,7 @@ button {
     display: block;
     margin-left: auto;
     height: 40px;
+    border-radius: 5px;
 }
 
 
@@ -519,6 +522,24 @@ button {
     border-bottom-left-radius: 0;
 }
 
+.button[disabled] {
+    opacity: .65;
+    pointer-events: none;
+}
+
+button {
+  font-size: inherit;
+}
+
+.modal {
+  font-size: 24px;
+  .cart-item button{
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    margin: 3px;
+  }
+}
 
 @media (max-width: 1200px) {
     .slide-1 {

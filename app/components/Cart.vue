@@ -2,13 +2,14 @@
   <!-- <h1 style="background-color: aquamarine;">Cart  viewCart: {{ viewCart }}</h1>
   <div class="overlay" :class="{'show': viewCart}"  id="modal-cart"></div> -->
 
-  <div class="overlay" :class="{ 'show': viewCart }" id="modal-cart">
-    <!-- Cart viewCart: {{ viewCart }} -->
+  <div class="overlay" :class="{ 'show': viewCart }" id="modal-cart"
+    @click.self="closeCart"
+  >
 
     <div class="modal">
       <header class="modal-header">
         <h2 class="modal-title">Cart</h2>
-        <button class="modal-close" @click="closeCart">x</button>
+        <button class="modal-close" @click="closeCart">&times;</button>
       </header>
 
       <table class="cart-table">
@@ -38,7 +39,7 @@
             <td>{{ cartItem.count }}</td>
             <td><button class="cart-btn-plus" @click="incr(cartItem)">+</button></td>
             <td>{{ cartItem.count * cartItem.price }}$</td>
-            <td><button class="cart-btn-delete" @click="remove(cartItem)">x</button></td>
+            <td><button class="cart-btn-delete" @click="remove(cartItem)">&times;</button></td>
           </tr>
 
         </tbody>
@@ -51,6 +52,11 @@
         </tfoot>
       </table>
 
+      <div>
+        <h3 v-if="error" style="color: red; margin: 0;text-align: center;">{{ error }}</h3>
+        <h3 v-if="success" style="color: green; margin: 0;text-align: center;">{{ success }}</h3>
+      </div>
+
       <form class="modal-form" @submit.prevent="submitForm">
         <input autocomplete="none" class="modal-input" type="text" placeholder="Имя" v-model="form.name">
         <input autocomplete="none" class="modal-input" type="text" placeholder="Телефон" v-model="form.phone">
@@ -58,10 +64,6 @@
           <span class="button-text">Checkout</span>
         </button>
       </form>
-      <div>
-        <h3 v-if="error" style="color: red;">{{ error }}</h3>
-        <h3 v-if="success" style="color: green;">{{ success }}</h3>
-      </div>
     </div>
   </div>
 </template>

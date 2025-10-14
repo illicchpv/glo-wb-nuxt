@@ -414,7 +414,7 @@ button {
 
 .cart-table {
     border-collapse: collapse;
-    min-width: 540px;
+    min-width: 60vw;
     margin-bottom: 15px;
 }
 
@@ -533,6 +533,7 @@ button {
 
 .modal {
   font-size: 24px;
+
   .cart-item button{
     display: inline-block;
     width: 32px;

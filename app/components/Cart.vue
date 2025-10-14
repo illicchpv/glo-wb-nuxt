@@ -32,6 +32,13 @@
         </thead>
         <tbody class="cart-table__goods">
 
+          <tr v-if="!total">
+            <td colspan="7">
+              <h2 style="text-align: center;color: coral;">Cart is empty!</h2>
+
+            </td>
+          </tr>
+
           <tr class="cart-item" v-for="cartItem in cartItems" :key="cartItem.id">
             <td>{{ cartItem.name }}</td>
             <td>{{ cartItem.price }}$</td>
@@ -43,7 +50,7 @@
           </tr>
 
         </tbody>
-        <tfoot>
+        <tfoot v-if="!!total">
           <tr>
             <th colspan=" 5">Total:</th>
             <th class="card-table__total" colspan="2">{{ total }}$</th>
@@ -57,7 +64,7 @@
         <h3 v-if="success" style="color: green; margin: 0;text-align: center;">{{ success }}</h3>
       </div>
 
-      <form class="modal-form" @submit.prevent="submitForm">
+      <form v-if="!!total" class="modal-form" @submit.prevent="submitForm">
         <input autocomplete="none" class="modal-input" type="text" placeholder="Имя" v-model="form.name">
         <input autocomplete="none" class="modal-input" type="text" placeholder="Телефон" v-model="form.phone">
         <button class="button cart-buy" type="submit">

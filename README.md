@@ -79,16 +79,16 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 ---
 ---
 
-[NUXT](https://nuxt-ru.vercel.app/docs/getting-started/introduction)
+[🔗 NUXT](https://nuxt-ru.vercel.app/docs/getting-started/introduction)
 
-[мой GIT](https://github.com/illicchpv/glo-wb)
+[🔗 мой GIT](https://github.com/illicchpv/glo-wb)
 
-[мой GIT NUXT](https://github.com/illicchpv/glo-wb-nuxt)
+[🔗 мой GIT NUXT](https://github.com/illicchpv/glo-wb-nuxt)
 
 ### Урок 5. Базовое приложение на Nuxt
 
-- [Документация Nuxt](https://nuxt.com/)
-- [Исходный шаблон приложения для интенсива](https://github.com/Velmoren/wb-nuxt/tree/new-template)
+- [🔗 Документация Nuxt.com](https://nuxt.com/)
+- [🔗 Исходный шаблон приложения для интенсива](https://github.com/Velmoren/wb-nuxt/tree/new-template)
 
 #### Задание
 
@@ -107,9 +107,9 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
   - nuxt.config.ts - конфигурация приложения
   - tsconfig.json - настройки ts ?
 
-### Урок 6. [Nuxt. Получение и вывод данных](https://glo-academy.org/wb_js_lesson6)
+### Урок 6. [🔗 Nuxt. Получение и вывод данных](https://glo-academy.org/wb_js_lesson6)
 
-- [Документация Nuxt](https://nuxt.com/)
+- [🔗 Документация Nuxt.com](https://nuxt.com/)
 
 #### Задание
 
@@ -117,7 +117,7 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 - Результат необходимо отправить телеграм-боту — залить на github или отправить архивом
 
 
-### Урок 7. [Nuxt. Корзина товаров](https://glo-academy.org/wb_js_lesson7)
+### Урок 7. [🔗 Nuxt. Корзина товаров](https://glo-academy.org/wb_js_lesson7)
 
 - глобальные состояния
 

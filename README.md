@@ -1,6 +1,7 @@
 # Nuxt Minimal Starter
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Look at the [🔗 Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.  
+ru Look at the [🔗 Nuxt documentation](https://nuxt-ru.vercel.app/docs/getting-started/introduction) to learn more.  
 
 ## Setup
 
@@ -72,7 +73,8 @@ yarn preview
 bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Check out the [🔗 deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.  
+ru Check out the [🔗 deployment documentation](https://nuxt-ru.vercel.app/docs/getting-started/deployment) for more information.  
 
 
 ---
@@ -88,6 +90,7 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 ### Урок 5. Базовое приложение на Nuxt
 
 - [🔗 Документация Nuxt.com](https://nuxt.com/)
+- [🔗 ru Документация Nuxt.com](https://nuxt-ru.vercel.app/)
 - [🔗 Исходный шаблон приложения для интенсива](https://github.com/Velmoren/wb-nuxt/tree/new-template)
 
 #### Задание
@@ -95,13 +98,14 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 - Повторить код за уроком
 
 - Результат необходимо отправить телеграм-боту — залить на github или отправить архивом
-
+```
 >npm create nuxt@latest <project-name>
 	npm
 	> Are you interested in participating? no // Вы заинтересованы в участии?
 	> Initialize git repository? no
 	> Would you like to install any of the official modules? no
 >npm i
+```
 
 	- app\app.vue - основной компонент приложения
   - nuxt.config.ts - конфигурация приложения

@@ -14,7 +14,7 @@
           <div class="goods-card">
             <span class="label" v-if="card.label">{{ titleFormat(card.label) }}</span>
             <!-- <img src="/images/image-119.jpg" alt="image: Hoodie" class="goods-image"> -->
-            <img :src="card.img" :alt="`Image: ${card.name}`" class="goods-image">
+            <img :src="card.img" :alt="`Image: ${card.name}`" class="goods-image" width="190" height="236">
 
             <h3 class="goods-title">{{ card.name }}</h3>
             <p class="goods-description">{{ card.description }}</p>

@@ -83,6 +83,9 @@ const cartItems = useCart();
 const total = computed(() => cartItems.value.reduce((acc, el) => acc + (el.count * el.price), 0))
 
 const closeCart = () => {
+  error.value = ''
+  success.value = ''
+
   // const old = viewCart.value
   viewCart.value = false;
   // viewCart.value = !viewCart.value
@@ -123,6 +126,8 @@ const success = ref<string>('')
 const error = ref<string>('')
 
 const submitForm = async () => {
+  error.value = ''
+  success.value = ''
   if (!form.value.name || !form.value.phone) {
     error.value = 'Заполните обязательные поля'
     setTimeout(() => {
@@ -130,8 +135,6 @@ const submitForm = async () => {
     }, 2_000)
     return
   }
-  error.value = ''
-  success.value = ''
   const dataToSend = {
     ...form.value,
     cartObj: cartItems.value.map(el => ({ ...el })),
